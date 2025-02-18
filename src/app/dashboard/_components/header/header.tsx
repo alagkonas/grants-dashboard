@@ -21,7 +21,7 @@ export default function Header() {
             <Image src="/vee-logo.png" alt="Vee" width={100} height={100} />
           </Link>
 
-          <div className="hidden sm:flex items-end space-x-2 h-full">
+          <div className="hidden md:flex items-end space-x-2 h-full">
             <Button
               variant="ghost"
               className="h-3/4 text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-100"
@@ -50,7 +50,7 @@ export default function Header() {
             <AvatarImage className="rounded-sm" src="grant-avatar.png" alt="Maya" />
             <AvatarFallback>M</AvatarFallback>
           </Avatar>
-          <span className="font-medium">Hi Maya! 👋</span>
+          <span className="font-medium">Hi Maya! &#128075;</span>
         </div>
 
         <div className="flex items-center space-x-4">

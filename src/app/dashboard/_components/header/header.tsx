@@ -1,16 +1,12 @@
 import React from "react";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuTrigger
-} from "@/components/ui/dropdown-menu";
+
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import { ChevronDown, Bell, Menu } from "lucide-react";
+import { Bell, Menu } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import OrganizationDropdown from "@/app/dashboard/_components/header/components/organization-dropdown";
+import UserDropdown from "@/app/dashboard/_components/header/components/user-dropdown";
 
 export default function Header() {
   return (
@@ -54,58 +50,9 @@ export default function Header() {
         </div>
 
         <div className="flex items-center space-x-4">
-          <div className="hidden lg:block">
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild className="bg-gray-200 opacity-60 h-11">
-                <Button
-                  variant="outline"
-                  className="h-8 px-3 text-sm border-gray-200 text-gray-700"
-                >
-                  <span>Select Organization</span>
-                  <ChevronDown className="ml-2 h-4 w-4 text-gray-500" />
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent
-                align="end"
-                className="w-[200px] bg-[#F9FAFB]"
-              >
-                <DropdownMenuGroup>
-                  <DropdownMenuItem className="focus:bg-gray-100">
-                    Organization 1
-                  </DropdownMenuItem>
-                  <DropdownMenuItem className="focus:bg-gray-100">
-                    Organization 2
-                  </DropdownMenuItem>
-                </DropdownMenuGroup>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          </div>
+          <OrganizationDropdown />
 
-          <div className="hidden sm:block">
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild className="bg-gray-100 h-11">
-                <Button
-                  variant="ghost"
-                  className="h-8 flex items-center font-semibold border-gray-200 space-x-2 px-2"
-                >
-                  <Avatar className="h-8 w-10">
-                    <AvatarImage src="user-avatar.png" alt="Maya Geldt" />
-                    <AvatarFallback>MG</AvatarFallback>
-                  </Avatar>
-                  <span className="text-sm text-gray-700">Maya Geldt</span>
-                  <ChevronDown className="h-4 w-4 text-gray-500" />
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent
-                align="end"
-                className="w-[200px] bg-[#F9FAFB]"
-              >
-                <DropdownMenuItem className="focus:bg-gray-100">Profile</DropdownMenuItem>
-                <DropdownMenuItem className="focus:bg-gray-100">Settings</DropdownMenuItem>
-                <DropdownMenuItem className="focus:bg-gray-100">Sign out</DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          </div>
+          <UserDropdown />
 
           <Button
             className="h-8 w-8 text-gray-500 hover:text-gray-900 hidden sm:block"

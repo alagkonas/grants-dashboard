@@ -9,7 +9,7 @@ import { getOrganizationHeaders } from "@/server/utils";
 
 const OPTIONS: EmblaOptionsType = { align: "start", loop: true };
 
-export default async function ResponsiveGrantsCarousel() {
+export default async function ResponsiveApplicationsCarousel() {
   const organizationHeaders = await getOrganizationHeaders();
 
   const { data } = await getClient()

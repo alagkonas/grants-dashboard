@@ -38,7 +38,7 @@ const cards = [
 
 export default function CompletedGrants() {
   return (
-    <div className="lg:w-3/4 md:w-[95%] h-72 bg-white px-4 py-6 rounded-xl shadow-sm flex flex-row">
+    <div className="lg:w-3/4 md:w-[95%] bg-white px-4 py-6 rounded-xl md:shadow-sm flex flex-row">
       <div className="hidden md:flex flex-col justify-between w-2/5">
         <div>
           <h2 className="text-2xl font-semibold">Let&#39;s get the money!</h2>

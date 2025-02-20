@@ -5,7 +5,7 @@ import CompletedGrants from "@/app/dashboard/_components/completed-grants-previe
 export default function CompletedGrantsPreview() {
   return (
     <div className="md:bg-gray-50 sm:bg-white py-8">
-      <div className="w-full ">
+      <div className="w-full">
         <div className="flex flex-row items-center justify-evenly">
           <UserGreeting />
           <CompletedGrants />

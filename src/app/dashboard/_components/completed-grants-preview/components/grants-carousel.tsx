@@ -3,10 +3,10 @@ import { Clock } from "lucide-react";
 
 export default function GrantsCarousel({ cards }: { cards: { amount: number; dueIn: number; foundation: string; organization: string; }[] }) {
   return (
-    <div className="relative">
+    <div className="relative lg:w-[calc(100%-100px)] md:w-[calc(100%-300px)]">
       <div className="absolute right-0 top-0 h-full w-[20%] bg-gradient-to-r from-transparent to-gray-50 z-10" />
 
-      <div className="space-x-4 h-full overflow-x-hidden   hidden md:flex">
+      <div className="space-x-4 h-full overflow-x-hidden hidden md:flex">
         {cards.map((_, index) => (
           <div
             key={index}

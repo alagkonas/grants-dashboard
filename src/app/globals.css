@@ -83,4 +83,8 @@ body {
         -ms-overflow-style: none;
         scrollbar-width: none;
     }
+
+    .touch-pan-y {
+        touch-action: pan-y pinch-zoom;
+    }
 }

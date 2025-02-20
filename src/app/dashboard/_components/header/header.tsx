@@ -7,6 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import OrganizationDropdown from "@/app/dashboard/_components/header/components/organization-dropdown";
 import UserDropdown from "@/app/dashboard/_components/header/components/user-dropdown";
+import { setOrganizationCookies } from "@/server/actions";
 
 export default function Header() {
   return (
@@ -50,7 +51,7 @@ export default function Header() {
         </div>
 
         <div className="flex items-center space-x-4">
-          <OrganizationDropdown />
+          <OrganizationDropdown setOrganizationCookiesAction={setOrganizationCookies}/>
 
           <UserDropdown />
 

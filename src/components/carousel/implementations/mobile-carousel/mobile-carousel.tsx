@@ -5,13 +5,14 @@ import { EmblaOptionsType } from "embla-carousel";
 import { useDotButton } from "@/components/carousel/hooks/useDotButton";
 import useEmblaCarousel from "embla-carousel-react";
 import CarouselCard from "@/components/carousel/components/carousel-card";
+import { GetReadyApplicationsNode } from "@/services/graphql/types";
 
-type PropType = React.PropsWithChildren<{
-  slides: number[]
+type MobileCarouselProps = {
+  slides: GetReadyApplicationsNode[]
   options?: EmblaOptionsType
-}>
+}
 
-export default function MobileCarousel({ slides, options }: PropType) {
+export default function MobileCarousel({ slides, options }: MobileCarouselProps) {
   const [emblaRef, emblaApi] = useEmblaCarousel(options);
 
   const { selectedIndex, scrollSnaps, onDotButtonClick } =
@@ -33,8 +34,8 @@ export default function MobileCarousel({ slides, options }: PropType) {
               ref={emblaRef}
             >
               <div className="flex touch-pan-y -ml-8">
-                {slides.map((index) => (
-                  <CarouselCard key={index} />
+                {slides.map((application) => (
+                  <CarouselCard key={application.id} application={application} />
                 ))}
               </div>
             </div>
@@ -53,6 +54,5 @@ export default function MobileCarousel({ slides, options }: PropType) {
         </div>
       </div>
     </div>
-  )
-    ;
+  );
 }

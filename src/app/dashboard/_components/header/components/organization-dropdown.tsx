@@ -7,6 +7,10 @@ import { ChevronDown } from "lucide-react";
 import { Organization } from "@/types/types";
 import { useApolloClient } from "@apollo/client";
 
+type OrganizationDropdownProps = {
+  setOrganizationCookiesAction: (organizationId: string, organizationName: string) => Promise<void>
+}
+
 // we copy organizations from grants-dashboard-api to ensure same ids and names
 // in a real world scenario, server would have provided them to client
 const organizations: Organization[] = [
@@ -24,20 +28,24 @@ const organizations: Organization[] = [
   }
 ];
 
-export default function OrganizationDropdown() {
+export default function OrganizationDropdown({ setOrganizationCookiesAction }: OrganizationDropdownProps) {
   // in a real world scenario, we could save user's selection to session or local storage
   // and fetch the last saved option on mount within a useEffect
   // here we default to first organization
   const [selectedOrganization, setSelectedOrganization] = useState<Organization>(organizations[0]);
   const apolloClient = useApolloClient();
 
-  const handleChangeOrganization = useCallback((organizationId: string) => {
+  const handleChangeOrganization = useCallback(async (organizationId: string) => {
     const newSelectedOrganization = organizations.find(organization => organization.id === organizationId)!;
     setSelectedOrganization(newSelectedOrganization);
 
-    localStorage.setItem("organization", JSON.stringify(newSelectedOrganization));
+    await setOrganizationCookiesAction(
+      newSelectedOrganization.id,
+      newSelectedOrganization.name
+    );
+
     apolloClient.resetStore();
-  }, [apolloClient]);
+  }, [apolloClient, setOrganizationCookiesAction]);
 
   return (
     <div className="hidden lg:block">

@@ -7,13 +7,14 @@ import { usePrevNextButtons } from "@/components/carousel/hooks/usePrevNextButto
 import useEmblaCarousel from "embla-carousel-react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import CarouselCard from "@/components/carousel/components/carousel-card";
+import { GetReadyApplicationsNode } from "@/services/graphql/types";
 
-type PropType = React.PropsWithChildren<{
-  slides: number[]
+type DesktopCarouselProps = {
+  slides: GetReadyApplicationsNode[]
   options?: EmblaOptionsType
-}>
+}
 
-export default function DesktopCarousel({ slides, options }: PropType) {
+export default function DesktopCarousel({ slides, options }: DesktopCarouselProps) {
   const [emblaRef, emblaApi] = useEmblaCarousel(options);
 
   const { selectedIndex, scrollSnaps, onDotButtonClick } =
@@ -72,8 +73,8 @@ export default function DesktopCarousel({ slides, options }: PropType) {
           ref={emblaRef}
         >
           <div className="flex touch-pan-y -ml-8">
-            {slides.map((index) => (
-              <CarouselCard key={index} />
+            {slides.map((application) => (
+              <CarouselCard key={application.id} application={application} />
             ))}
           </div>
         </div>

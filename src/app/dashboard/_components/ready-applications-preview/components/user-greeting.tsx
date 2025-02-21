@@ -3,10 +3,10 @@ import Image from "next/image";
 
 export default function UserGreeting() {
   return (
-    <div className="hidden lg:block h-80 w-1/5 bg-white px-4 pb-2 rounded-xl shadow-sm">
+    <div className="hidden lg:block h-60 w-1/5 bg-white px-4 pb-2 rounded-xl shadow-sm">
       <div className="flex flex-col items-center space-x-4 justify-between">
         <div className="relative">
-          <Image src="/grant-greeting.png" alt="grant greeting" width={300} height={300} />
+          <Image src="/grant-greeting.png" alt="grant greeting" width={250} height={250} />
         </div>
 
         <div className="flex flex-col items-center space-x-4">

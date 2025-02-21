@@ -1,6 +1,6 @@
 import { gql, TypedDocumentNode } from "@apollo/client";
 import { ApplicationStatus } from "@/types/types";
-import { GetReadyApplicationsNode } from "@/services/graphql/types";
+import { CreateApplicationNode, GetReadyApplicationsNode } from "@/services/graphql/types";
 
 export const UPDATE_APPLICATION_STATUS: TypedDocumentNode<{
   getApplications: GetReadyApplicationsNode[]
@@ -29,6 +29,25 @@ export const UPDATE_APPLICATION_STATUS: TypedDocumentNode<{
                     grantName
                     deadline
                     location
+                }
+            }
+        }
+    }`;
+
+export const CREATE_APPLICATION: TypedDocumentNode<{
+  createApplication: CreateApplicationNode
+}, {
+  matchId: string;
+}> = gql`
+    mutation CreateApplication($matchId: ID!) {
+        createApplication(matchId: $matchId) {
+            id
+            status
+            createdAt
+            match {
+                id
+                grant {
+                    foundationName
                 }
             }
         }

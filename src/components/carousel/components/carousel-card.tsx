@@ -10,12 +10,12 @@ type CarouselCardProps = {
 export default function CarouselCard({ application }: CarouselCardProps) {
   return (
     <div
-      className="flex-[0_0_35%] pl-8"
+      className="flex-[0_0_40%] pl-8"
     >
       <div
-        className={"flex-shrink-0 transition-opacity duration-300 bg-gradient-to-r to-orange-400 from-orange-300 p-6 text-white rounded-xl"}
+        className={"w-full h-full transition-opacity duration-300 bg-gradient-to-r to-orange-400 from-orange-300 p-2 text-white rounded-xl"}
       >
-        <div className="space-y-4 flex min-w-[300px] flex-col items-center">
+        <div className="space-y-1 h-full flex min-w-[300px] flex-col items-center justify-between">
           <div className="bg-white/70 text-gray-800 px-3 py-1 rounded-full text-sm w-fit flex flex-row items-center justify-between ">
             <Clock className="w-4 h-4 mr-2 text-gray-800" />
             Due in {new Date(application?.match?.grant?.deadline).getDay()} days

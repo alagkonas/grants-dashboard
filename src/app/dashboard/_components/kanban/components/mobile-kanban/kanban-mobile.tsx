@@ -53,6 +53,7 @@ export default function MobileKanban({ groupedApplications, newMatches }: Kanban
             <KanbanApplicationColumnMobile
               key={column.id}
               data={groupedApplications[column.id]}
+              status={column.id}
               columnInfo={column.info} />
           </TabsContent>
         ))}

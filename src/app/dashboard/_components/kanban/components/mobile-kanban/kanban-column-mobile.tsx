@@ -24,6 +24,7 @@ export function KanbanNewGrantsColumnMobile({ data, columnInfo }: KanbanNewGrant
                 <KanbanCard
                   key={match.id}
                   grant={match.grant}
+                  recordId={match.id}
                 />
               ))}
             </>
@@ -38,7 +39,7 @@ export function KanbanNewGrantsColumnMobile({ data, columnInfo }: KanbanNewGrant
   );
 }
 
-export function KanbanApplicationColumnMobile({ data, columnInfo }: KanbanApplicationColumnProps) {
+export function KanbanApplicationColumnMobile({ data, columnInfo, status }: KanbanApplicationColumnProps) {
   const columnTotal = data?.reduce((total, application) => total + (application?.match?.grant?.avgAmount ?? 0), 0) ?? 0;
 
   return (
@@ -59,7 +60,9 @@ export function KanbanApplicationColumnMobile({ data, columnInfo }: KanbanApplic
               {data?.map((application) => (
                 <KanbanCard
                   key={application.id}
+                  status={status}
                   grant={application.match.grant}
+                  recordId={application.id}
                 />
               ))}
             </>

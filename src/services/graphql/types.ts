@@ -29,3 +29,15 @@ export type GetNewMatchesNode = {
     location?: string
   }
 }
+
+export type CreateApplicationNode = {
+  id: string;
+  status: ApplicationStatus;
+  createdAt: DateTime
+  match: {
+    id: string;
+    grant: {
+      foundationName: string;
+    }
+  }
+}

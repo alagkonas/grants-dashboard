@@ -5,7 +5,7 @@ import { KANBAN_APPLICATIONS_COLUMNS, KanbanBoardProps } from "@/app/dashboard/_
 
 export default function KanbanBoard({ groupedApplications, newMatches }: KanbanBoardProps) {
   return (
-    <div className="flex flex-col w-full max-h-[calc(100vh-300px)] overflow-x-auto">
+    <div className="w-full overflow-x-auto">
       <div className="flex-1">
         <div className="grid md:w-[1400px] gap-2 lg:w-full grid-cols-5 divide-x divide-gray-100">
 
@@ -34,6 +34,7 @@ export default function KanbanBoard({ groupedApplications, newMatches }: KanbanB
               <div className="px-4 py-4 overflow-y-hidden no-scrollbar">
                 <KanbanApplicationColumn
                   key={column.id}
+                  status={column.id}
                   data={groupedApplications[column.id]}
                   columnInfo={column.info}
                 />

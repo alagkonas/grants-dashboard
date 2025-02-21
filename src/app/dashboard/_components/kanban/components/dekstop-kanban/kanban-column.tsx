@@ -2,18 +2,19 @@ import React from "react";
 import KanbanCard from "@/app/dashboard/_components/kanban/components/kanban-card";
 import { GetNewMatchesNode, GetReadyApplicationsNode } from "@/services/graphql/types";
 import { Texts } from "@/app/dashboard/_components/kanban/texts";
+import { ApplicationStatus } from "@/types/types";
 
 export type KanbanApplicationColumnProps = {
   data: GetReadyApplicationsNode[];
   columnInfo: string;
+  status: ApplicationStatus;
 }
 
-export function KanbanApplicationColumn({ data, columnInfo }: KanbanApplicationColumnProps) {
-
+export function KanbanApplicationColumn({ data, columnInfo, status }: KanbanApplicationColumnProps) {
   const columnTotal = data?.reduce((total, application) => total + (application?.match?.grant?.avgAmount ?? 0), 0) ?? 0;
 
   return (
-    <div className="px-6 py-1 max-h-[calc(100vh-500px)] overflow-y-hidden rounded-lg bg-orange-100 no-scrollbar ">
+    <div className="px-3 py-1 max-h-[calc(100vh-445px)] overflow-y-hidden rounded-lg bg-orange-100 no-scrollbar ">
       <div className="sticky top-0 pt-4 pb-2 px-2 z-10 flex flex-col justify-center items-center w-full">
         <h2 className="text-base font-semibold text-gray-800">{columnInfo}</h2>
         <p className="text-gray-500 mt-1">
@@ -23,11 +24,13 @@ export function KanbanApplicationColumn({ data, columnInfo }: KanbanApplicationC
       </div>
 
       {data?.length ? (
-        <div className="py-4 max-h-[calc(100vh-650px)] overflow-y-auto no-scrollbar">
+        <div className="py-4 max-h-[calc(100vh-530px)] overflow-y-auto no-scrollbar">
           {data?.map((application) => (
             <KanbanCard
               key={application.id}
+              status={status}
               grant={application.match.grant}
+              recordId={application.id}
             />
           ))}
         </div>
@@ -52,7 +55,7 @@ export function KanbanNewGrantsColumn({ data, columnInfo }: KanbanNewGrantsColum
   const columnTotal = data?.reduce((total, match) => total + (match.grant.avgAmount ?? 0), 0) ?? 0;
 
   return (
-    <div className="px-3 py-1 max-h-[calc(100vh-500px)] overflow-y-hidden rounded-lg bg-orange-100 no-scrollbar ">
+    <div className="px-3 py-1 max-h-[calc(100vh-445px)] overflow-y-hidden rounded-lg bg-orange-100 no-scrollbar ">
       <div className="sticky top-0 pt-4 pb-2 px-2 z-10 flex flex-col justify-center items-center w-full">
         <h2 className="text-base font-semibold text-gray-800">{columnInfo}</h2>
         <p className="text-gray-500 mt-1">
@@ -62,11 +65,12 @@ export function KanbanNewGrantsColumn({ data, columnInfo }: KanbanNewGrantsColum
       </div>
 
       {data?.length ? (
-        <div className="py-4 max-h-[calc(100vh-650px)] overflow-y-auto no-scrollbar">
+        <div className="py-4 max-h-[calc(100vh-530px)] overflow-y-auto no-scrollbar">
           {data?.map((match) => (
             <KanbanCard
               key={match.id}
               grant={match.grant}
+              recordId={match.id}
             />
           ))}
         </div>
@@ -76,7 +80,6 @@ export function KanbanNewGrantsColumn({ data, columnInfo }: KanbanNewGrantsColum
         </div>
       )}
       <div className="sticky top-0 px-6 py-4 z-11" />
-
     </div>
   );
 }

@@ -27,7 +27,6 @@ export const GET_READY_APPLICATIONS: TypedDocumentNode<{
     }
 }`;
 
-
 export const GET_KANBAN_DATA: TypedDocumentNode<{
   newMatches: GetNewMatchesNode[];
   applications: GetReadyApplicationsNode[];

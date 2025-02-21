@@ -7,7 +7,7 @@ import { getClient } from "@/services/apollo-client/apollo-client";
 import { GET_READY_APPLICATIONS } from "@/services/graphql/queries";
 import { getOrganizationHeaders } from "@/server/utils";
 
-const OPTIONS: EmblaOptionsType = { align: "start", loop: true };
+const OPTIONS: EmblaOptionsType = { align: "start", loop: true, containScroll: "trimSnaps", slidesToScroll: 1 };
 
 export default async function ResponsiveApplicationsCarousel() {
   const organizationHeaders = await getOrganizationHeaders();

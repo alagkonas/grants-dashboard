@@ -43,7 +43,7 @@ export default async function ResponsiveKanban() {
 
   return (
     <>
-      <div className="hidden md:block">
+      <div className="hidden md:flex flex-col ">
         <KanbanBoard {...mappedData} />
       </div>
 

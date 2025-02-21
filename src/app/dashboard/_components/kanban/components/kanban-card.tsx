@@ -9,15 +9,16 @@ import { formatDate } from "@/utils/formatDate";
 
 export type ApplicationCardProps = {
   status?: ApplicationStatus;
-  grant: Partial<Grant>;
+  grant: Partial<Grant>
+  recordId: string
 }
 
-export default function KanbanCard({ grant, status }: ApplicationCardProps) {
-  const cardActionFooter = getCardActionFooter(status);
+export default function KanbanCard({ grant, status, recordId }: ApplicationCardProps) {
+  const cardActionFooter = getCardActionFooter({ status, grant, recordId });
 
   return (
     <Card
-      className={`mb-4 `}
+      className="mb-4"
     >
       <CardContent className="pt-6 space-y-4">
         {status === ApplicationStatus.IN_PROGRESS ? (

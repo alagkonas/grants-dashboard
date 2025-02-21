@@ -28,7 +28,7 @@ export default function DesktopCarousel({ slides, options }: DesktopCarouselProp
   } = usePrevNextButtons(emblaApi);
 
   return (
-    <div className="lg:w-3/4 h-80 md:w-[95%] bg-white px-4 py-6 rounded-xl md:shadow-sm flex flex-row">
+    <div className="lg:w-3/4 h-60 md:w-[95%] bg-white px-4 py-6 rounded-xl md:shadow-sm flex flex-row justify-between">
       <div className="hidden md:flex flex-col justify-between w-1/5">
         <div>
           <h2 className="text-2xl font-semibold">Let&#39;s get the money!</h2>
@@ -67,12 +67,12 @@ export default function DesktopCarousel({ slides, options }: DesktopCarouselProp
         </div>
       </div>
 
-      <div className="md:w-[calc(100%-100px)] space-x-4 w-4/5 overflow-x-hidden hidden md:flex relative">
+      <div className="md:max-w-[calc(100%-100px)] space-x-4 w-4/5 overflow-x-hidden hidden md:flex relative">
         <div
           className="overflow-hidden w-full"
           ref={emblaRef}
         >
-          <div className="flex touch-pan-y -ml-8">
+          <div className="flex touch-pan-y h-full -ml-8">
             {slides.map((application) => (
               <CarouselCard key={application.id} application={application} />
             ))}

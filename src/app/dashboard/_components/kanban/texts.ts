@@ -12,16 +12,25 @@ export enum Texts {
 
   AvgAmount = "Avg Amount",
   PercentInfo = "Of the application is field",
-  ApplicationFinishInfo = "I will finish in 3 days",
 
   Deadline = "Deadline",
   GettingStarted = "Getting Started",
   Location = "Location",
 
-  NoApplicationsInfo = 'There are no applications',
-  NoNewGrants = 'There are no new grants',
+  NoApplicationsInfo = "There are no applications",
+  NoNewGrants = "There are no new grants",
 
   CreditButton = "Credit(s)",
   EditApplicationButton = "Edit application",
   ViewInfoButton = "View info",
+
+  CreateApplication = "Create application",
+  UpdateApplication = "Update application",
+
+  CreateApplicationConfirmation = "Are you sure you want to create an application?",
+  UpdateApplicationConfirmation = "Are you sure you want to update the application?",
+
+  Create = "Create",
+  Update = "Update"
+
 }

@@ -38,14 +38,14 @@ export default function DesktopCarousel({ slides, options }: DesktopCarouselProp
         <div>
           <div className="flex items-center space-x-4 mb-4">
             <button
-              className="p-2 rounded-lg border border-gray-200 hover:bg-gray-50"
+              className="p-2 rounded-lg border border-orange-500 hover:bg-gray-50 hover:cursor-pointer"
               onClick={onPrevButtonClick}
               disabled={prevBtnDisabled}
             >
               <ArrowLeft className="h-4 w-4 text-orange-500" />
             </button>
             <button
-              className="p-2 rounded-lg border border-gray-200 hover:bg-gray-50"
+              className="p-2 rounded-lg border border-orange-500 hover:bg-gray-50 hover:cursor-pointer"
               onClick={onNextButtonClick}
               disabled={nextBtnDisabled}
             >

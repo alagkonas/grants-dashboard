@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React from "react";
 
 import DesktopCarousel from "@/components/carousel/implementations/desktop-carousel/desktop-carousel";
 import { EmblaOptionsType } from "embla-carousel";
@@ -23,10 +23,10 @@ export default async function ResponsiveApplicationsCarousel() {
     });
 
   return (
-    <Suspense fallback={<>LOADING...</>}>
+    <>
       <DesktopCarousel slides={data?.getApplications} options={OPTIONS} />
 
       <MobileCarousel slides={data?.getApplications} options={OPTIONS} />
-    </Suspense>
+    </>
   );
 }

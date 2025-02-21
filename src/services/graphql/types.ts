@@ -16,3 +16,16 @@ export type GetReadyApplicationsNode = {
     }
   }
 }
+
+export type GetNewMatchesNode = {
+  id: string;
+  matchDate: DateTime;
+  grant: {
+    id: string;
+    avgAmount?: number;
+    foundationName: string;
+    grantName: string;
+    deadline: DateTime;
+    location?: string
+  }
+}

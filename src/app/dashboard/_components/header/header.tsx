@@ -31,7 +31,7 @@ export default function Header() {
             </Button>
             <Button
               variant="ghost"
-              className="h-3/4 rounded-b-none rounded-t-lg border-b-2 border-b-orange-400 text-sm font-medium bg-orange-200 text-gray-900 hover:bg-[#FFEDD5]"
+              className="h-3/4 rounded-b-none rounded-t-lg border-b-2 border-b-orange-400 text-sm font-medium bg-orange-100 text-gray-900 hover:bg-orange-200"
             >
               <Avatar className="h-8 w-10">
                 <AvatarImage src="grant-avatar.png" alt="Grant" />

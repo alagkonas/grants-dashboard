@@ -21,7 +21,7 @@ export function CarouselCardSkeleton() {
 
 export function DesktopCarouselSkeleton() {
   return (
-    <div className="lg:w-3/4 h-60 md:w-[95%] bg-white px-4 py-6 rounded-xl md:shadow-sm flex flex-row justify-between">
+    <div className="hidden lg:w-3/4 h-60 md:w-[95%] bg-white px-4 py-6 rounded-xl md:shadow-sm md:flex flex-row justify-between">
       <div className="hidden md:flex flex-col justify-between w-1/5">
         <div>
           <div className={`${shimmer} h-8 w-48 bg-gray-200 rounded-md`} />
@@ -69,7 +69,7 @@ export function MobileCarouselSkeleton() {
         <div className={`${shimmer} h-5 w-48 bg-gray-200 rounded-md`} />
       </div>
 
-      <div className="relative mt-2 mb-2 w-[400px]">
+      <div className="relative mt-2 mb-2 w-[350px]">
         <div className="flex justify-evenly h-52 w-full flex-col items-center">
           <div className="overflow-x-hidden h-full w-[90%]">
             <div className="overflow-hidden h-full w-full">

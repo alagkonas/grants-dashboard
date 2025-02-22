@@ -42,3 +42,5 @@ The project uses the Grants Dashboard API:
 - To optimize user experience while streaming data from the server, I implemented `skeleton` components. For
   demonstration purposes, you can simulate slow network requests by uncommenting line 10 in
   `ResponsiveApplicationsCarousel` and line 8 in `ResponsiveKanban` (don't forget to comment them again).
+- For the carousel components, `shadcn's` carousel is highly opinionated, so I created my own implementation using
+  `embla-carousel` (the same package that radix-ui, which `shadcn` uses under the hood, relies on).

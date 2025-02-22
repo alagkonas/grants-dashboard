@@ -10,7 +10,7 @@ import CarouselCard from "@/components/carousel/components/carousel-card";
 import { useSuspenseQuery } from "@apollo/client";
 import { GET_READY_APPLICATIONS } from "@/services/graphql/queries";
 
-export const options: EmblaOptionsType = { align: "start", loop: true, containScroll: "trimSnaps", slidesToScroll: 1 };
+export const options: EmblaOptionsType = { align: "start", loop: false, containScroll: "trimSnaps", slidesToScroll: 1 };
 
 export default function DesktopCarousel() {
   const { data } = useSuspenseQuery(GET_READY_APPLICATIONS);
@@ -27,7 +27,7 @@ export default function DesktopCarousel() {
   } = usePrevNextButtons(emblaApi);
 
   return (
-    <div className="lg:w-3/4 h-60 md:w-[95%] bg-white px-4 py-6 rounded-xl md:shadow-sm flex flex-row justify-between">
+    <div className="hidden lg:w-3/4 h-60 md:w-[95%] bg-white px-4 py-6 rounded-xl md:shadow-sm md:flex flex-row justify-between">
       <div className="hidden md:flex flex-col justify-between w-1/5">
         <div>
           <h2 className="text-2xl font-semibold">Let&#39;s get the money!</h2>

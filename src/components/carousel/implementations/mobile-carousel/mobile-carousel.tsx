@@ -23,7 +23,7 @@ export default function MobileCarousel() {
         <p className="text-gray-600">Submit the Grants we&#39;ve completed</p>
       </div>
 
-      <div className="relative mt-2 mb-2 w-[400px]">
+      <div className="relative mt-2 mb-2 w-[350px]">
         <div className="flex justify-evenly h-52 w-full flex-col items-center">
           <div className="overflow-x-hidden h-full w-[90%]">
             <div

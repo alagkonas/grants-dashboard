@@ -1,7 +1,7 @@
 "use client";
 
 import React, { PropsWithChildren, useCallback, useEffect, useRef, useState } from "react";
-import { SquareChevronUp } from "lucide-react";
+import { ChevronUp } from "lucide-react";
 import ColumnHeader from "@/app/dashboard/_components/kanban/components/column-header";
 
 type MobileKanbanColumnWrapperProps = PropsWithChildren<{
@@ -49,7 +49,7 @@ export const MobileKanbanColumnWrapper = ({
   }, []);
 
   return (
-    <div ref={scrollContainerRef} className="flex-1 max-h-[calc(100vh-400px)] overflow-y-auto no-scrollbar  px-4">
+    <div ref={scrollContainerRef} className="flex-1 min-h-[calc(100vh-400px)] max-h-[calc(100vh-400px)] overflow-y-auto no-scrollbar px-4">
       <ColumnHeader columnInfo={columnInfo} columnTotal={columnTotal} />
       <div className="overflow-y-auto px-4">
         <div className="space-y-4 py-4">
@@ -58,8 +58,8 @@ export const MobileKanbanColumnWrapper = ({
               {children}
               {isScrollable && (
                 <div className="flex h-10 justify-end w-full">
-                  <button onClick={scrollToTop}>
-                    <SquareChevronUp className="w-7 h-7 text-gray-500 rounded-lg" />
+                  <button className="w-9 h-9 flex justify-center items-center border-2 border-gray-500 bg-white rounded-lg" onClick={scrollToTop}>
+                    <ChevronUp className="w-5 h-5 text-gray-500 " />
                   </button>
                 </div>
               )}

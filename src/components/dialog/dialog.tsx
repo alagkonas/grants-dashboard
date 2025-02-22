@@ -4,7 +4,6 @@ import React, { useEffect, useRef, useState } from "react";
 import { Loader } from "lucide-react";
 import { Dialog as ShadcnDialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { useRouter } from "next/navigation";
 
 type DialogProps = React.PropsWithChildren<{
   dialogTitle: string
@@ -16,14 +15,13 @@ type DialogProps = React.PropsWithChildren<{
 
 export default function Dialog({ children, dialogTitle, dialogInfo, onAction, actionText, loading }: DialogProps) {
   const [open, setOpen] = useState(false);
-  const router = useRouter();
   const submittedRef = useRef<boolean>(null);
 
   useEffect(() => {
     if (submittedRef && !loading) {
       setOpen(false);
     }
-  }, [loading, router]);
+  }, [loading]);
 
   return (
     <ShadcnDialog open={open} onOpenChange={setOpen}>

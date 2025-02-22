@@ -1,9 +1,17 @@
+"use client";
+
 import React from "react";
 import { DesktopKanbanNewApplicationColumn, DesktopKanbanNewGrantColumn } from "@/app/dashboard/_components/kanban/components/dekstop-kanban/desktop-kanban-column";
 import { Texts } from "@/app/dashboard/_components/kanban/texts";
-import { KANBAN_APPLICATIONS_COLUMNS, KanbanBoardProps } from "@/app/dashboard/_components/kanban/responsive-kanban";
+import { mapDataToKanbanData } from "@/app/dashboard/_components/kanban/utils/mapDataToKanbanData";
+import { useSuspenseQuery } from "@apollo/client";
+import { GET_KANBAN_DATA } from "@/services/graphql/queries";
+import { KANBAN_APPLICATIONS_COLUMNS } from "@/app/dashboard/_components/kanban/types";
 
-export default function DesktopKanbanBoard({ groupedApplications, newMatches }: KanbanBoardProps) {
+export default function DesktopKanbanBoard() {
+  const { data } = useSuspenseQuery(GET_KANBAN_DATA);
+  const { newMatches, groupedApplications } = mapDataToKanbanData(data);
+
   return (
     <div className="hidden md:flex flex-col ">
       <div className="w-full overflow-x-auto">

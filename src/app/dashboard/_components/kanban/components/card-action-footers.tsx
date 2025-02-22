@@ -7,6 +7,7 @@ import Dialog from "@/components/dialog/dialog";
 import { useMutation } from "@apollo/client";
 import { CREATE_APPLICATION, UPDATE_APPLICATION_STATUS } from "@/services/graphql/mutations";
 import { ApplicationStatus } from "@/types/types";
+import { GET_KANBAN_DATA, GET_READY_APPLICATIONS } from "@/services/graphql/queries";
 
 type UpdateApplicationActionsFooterProps = {
   status: ApplicationStatus;
@@ -17,7 +18,8 @@ export const NewGrantsActionFooter: React.FC<{ matchId: string | undefined }> = 
   const [createApplication, { loading }] = useMutation(CREATE_APPLICATION, {
     variables: {
       matchId
-    }
+    },
+    refetchQueries: [GET_KANBAN_DATA, GET_READY_APPLICATIONS]
   });
 
   return (
@@ -40,7 +42,9 @@ export const PreAppliedApplicationActionFooter: React.FC<UpdateApplicationAction
   const [updateApplication, { loading }] = useMutation(UPDATE_APPLICATION_STATUS, {
     variables: {
       ...props
-    }
+    },
+    refetchQueries: [GET_KANBAN_DATA, GET_READY_APPLICATIONS]
+
   });
   return (
     <>
@@ -62,7 +66,8 @@ export const InProgressApplicationActionFooter: React.FC<{ deadline: Date } & Up
   const [updateApplication, { loading }] = useMutation(UPDATE_APPLICATION_STATUS, {
     variables: {
       ...rest
-    }
+    },
+    refetchQueries: [GET_KANBAN_DATA, GET_READY_APPLICATIONS]
   });
   return (
     <div className="w-full flex justify-end items-center">
@@ -84,7 +89,8 @@ export const ReadyApplicationActionFooter: React.FC<UpdateApplicationActionsFoot
   const [updateApplication, { loading }] = useMutation(UPDATE_APPLICATION_STATUS, {
     variables: {
       ...props
-    }
+    },
+    refetchQueries: [GET_KANBAN_DATA, GET_READY_APPLICATIONS]
   });
   return (
     <>

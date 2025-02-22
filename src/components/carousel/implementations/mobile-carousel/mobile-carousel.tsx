@@ -1,18 +1,16 @@
 "use client";
 
 import React from "react";
-import { EmblaOptionsType } from "embla-carousel";
 import { useDotButton } from "@/components/carousel/hooks/useDotButton";
 import useEmblaCarousel from "embla-carousel-react";
 import CarouselCard from "@/components/carousel/components/carousel-card";
-import { GetReadyApplicationsNode } from "@/services/graphql/types";
+import { useSuspenseQuery } from "@apollo/client";
+import { GET_READY_APPLICATIONS } from "@/services/graphql/queries";
+import { options } from "@/components/carousel/implementations/desktop-carousel/desktop-carousel";
 
-type MobileCarouselProps = {
-  slides: GetReadyApplicationsNode[]
-  options?: EmblaOptionsType
-}
+export default function MobileCarousel() {
+  const { data } = useSuspenseQuery(GET_READY_APPLICATIONS);
 
-export default function MobileCarousel({ slides, options }: MobileCarouselProps) {
   const [emblaRef, emblaApi] = useEmblaCarousel(options);
 
   const { selectedIndex, scrollSnaps, onDotButtonClick } =
@@ -33,7 +31,7 @@ export default function MobileCarousel({ slides, options }: MobileCarouselProps)
               ref={emblaRef}
             >
               <div className="flex touch-pan-y -ml-8">
-                {slides.map((application) => (
+                {data?.getApplications.map((application) => (
                   <CarouselCard key={application.id} application={application} />
                 ))}
               </div>

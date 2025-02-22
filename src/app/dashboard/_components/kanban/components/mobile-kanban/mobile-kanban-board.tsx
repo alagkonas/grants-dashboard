@@ -1,11 +1,18 @@
+"use client";
+
 import { TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import React from "react";
 import { Texts } from "@/app/dashboard/_components/kanban/texts";
-import { KANBAN_APPLICATIONS_COLUMNS, KanbanBoardProps } from "@/app/dashboard/_components/kanban/responsive-kanban";
 import { KanbanApplicationColumnMobile, KanbanNewGrantsColumnMobile } from "@/app/dashboard/_components/kanban/components/mobile-kanban/mobile-kanban-column";
 import TabsProvider from "@/providers/TabsProvider";
+import { useSuspenseQuery } from "@apollo/client";
+import { GET_KANBAN_DATA } from "@/services/graphql/queries";
+import { mapDataToKanbanData } from "@/app/dashboard/_components/kanban/utils/mapDataToKanbanData";
+import { KANBAN_APPLICATIONS_COLUMNS } from "@/app/dashboard/_components/kanban/types";
 
-export default function MobileKanbanBoard({ groupedApplications, newMatches }: KanbanBoardProps) {
+export default function MobileKanbanBoard() {
+  const { data } = useSuspenseQuery(GET_KANBAN_DATA);
+  const { newMatches, groupedApplications } = mapDataToKanbanData(data);
 
   return (
     <div className="md:hidden w-full">

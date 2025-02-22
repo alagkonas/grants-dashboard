@@ -7,14 +7,13 @@ import { usePrevNextButtons } from "@/components/carousel/hooks/usePrevNextButto
 import useEmblaCarousel from "embla-carousel-react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import CarouselCard from "@/components/carousel/components/carousel-card";
-import { GetReadyApplicationsNode } from "@/services/graphql/types";
+import { useSuspenseQuery } from "@apollo/client";
+import { GET_READY_APPLICATIONS } from "@/services/graphql/queries";
 
-type DesktopCarouselProps = {
-  slides: GetReadyApplicationsNode[]
-  options?: EmblaOptionsType
-}
+export const options: EmblaOptionsType = { align: "start", loop: true, containScroll: "trimSnaps", slidesToScroll: 1 };
 
-export default function DesktopCarousel({ slides, options }: DesktopCarouselProps) {
+export default function DesktopCarousel() {
+  const { data } = useSuspenseQuery(GET_READY_APPLICATIONS);
   const [emblaRef, emblaApi] = useEmblaCarousel(options);
 
   const { selectedIndex, scrollSnaps, onDotButtonClick } =
@@ -73,7 +72,7 @@ export default function DesktopCarousel({ slides, options }: DesktopCarouselProp
           ref={emblaRef}
         >
           <div className="flex touch-pan-y h-full -ml-8">
-            {slides.map((application) => (
+            {data?.getApplications?.map((application) => (
               <CarouselCard key={application.id} application={application} />
             ))}
           </div>

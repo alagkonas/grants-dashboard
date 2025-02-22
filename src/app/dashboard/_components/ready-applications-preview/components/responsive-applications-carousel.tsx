@@ -1,32 +1,27 @@
 import React from "react";
 
 import DesktopCarousel from "@/components/carousel/implementations/desktop-carousel/desktop-carousel";
-import { EmblaOptionsType } from "embla-carousel";
 import MobileCarousel from "@/components/carousel/implementations/mobile-carousel/mobile-carousel";
-import { getClient } from "@/services/apollo-client/apollo-client";
+import { PreloadQuery } from "@/services/apollo-client/apollo-client";
 import { GET_READY_APPLICATIONS } from "@/services/graphql/queries";
 import { getOrganizationHeaders } from "@/server/utils";
 
-const OPTIONS: EmblaOptionsType = { align: "start", loop: true, containScroll: "trimSnaps", slidesToScroll: 1 };
-
 export default async function ResponsiveApplicationsCarousel() {
-  // await new Promise(resolve => setTimeout(resolve, 5000));
+  // await new Promise(resolve => setTimeout(resolve, 2000));
   const organizationHeaders = await getOrganizationHeaders();
-  const { data } = await getClient()
-    .query({
-      query: GET_READY_APPLICATIONS,
-      context: {
+
+  return (
+    <PreloadQuery
+      query={GET_READY_APPLICATIONS}
+      context={{
         headers: {
           ...organizationHeaders
         }
-      }
-    });
+      }}
+    >
+      <DesktopCarousel />
 
-  return (
-    <>
-      <DesktopCarousel slides={data?.getApplications} options={OPTIONS} />
-
-      <MobileCarousel slides={data?.getApplications} options={OPTIONS} />
-    </>
+      <MobileCarousel />
+    </PreloadQuery>
   );
 }

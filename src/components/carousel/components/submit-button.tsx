@@ -5,18 +5,15 @@ import { useMutation } from "@apollo/client";
 import { UPDATE_APPLICATION_STATUS } from "@/services/graphql/mutations";
 import { ApplicationStatus } from "@/types/types";
 import { Loader } from "lucide-react";
-import { useRouter } from "next/navigation";
+import { GET_KANBAN_DATA, GET_READY_APPLICATIONS } from "@/services/graphql/queries";
 
 export default function SubmitButton({ applicationId }: { applicationId: string }) {
-  const router = useRouter();
   const [updateApplicationStatus, { loading }] = useMutation(UPDATE_APPLICATION_STATUS, {
     variables: {
       applicationId,
       status: ApplicationStatus.SUBMITTED
     },
-    onCompleted: () => {
-      router.refresh();
-    }
+    refetchQueries: [GET_KANBAN_DATA, GET_READY_APPLICATIONS]
   });
 
   return (

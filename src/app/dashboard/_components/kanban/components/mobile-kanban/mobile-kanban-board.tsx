@@ -41,7 +41,7 @@ export default function MobileKanbanBoard() {
         </TabsList>
 
         <TabsContent
-          className="flex-2 flex flex-col overflow-auto bg-orange-100 overflow-x-auto"
+          className="flex-2 flex flex-col overflow-auto bg-grant-pink overflow-x-auto"
           value={"new-grants"}
         >
           <KanbanNewGrantsColumnMobile
@@ -58,7 +58,7 @@ export default function MobileKanbanBoard() {
               : KANBAN_APPLICATIONS_COLUMNS[index].id;
           return (
             <TabsContent
-              className="flex-2 flex flex-col overflow-hidden bg-orange-100 overflow-x-auto"
+              className="flex-2 flex flex-col overflow-hidden bg-grant-pink overflow-x-auto"
               key={column.id}
               value={column.id}
             >

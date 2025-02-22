@@ -15,6 +15,7 @@ export default {
   theme: {
   	extend: {
   		colors: {
+				"grant-pink": '#fbe7d8',
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {

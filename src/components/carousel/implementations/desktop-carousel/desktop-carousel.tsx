@@ -66,7 +66,7 @@ export default function DesktopCarousel() {
         </div>
       </div>
 
-      <div className="md:max-w-[calc(100%-100px)] space-x-4 w-4/5 overflow-x-hidden hidden md:flex relative">
+      <div className="md:max-w-[calc(100%-200px)] space-x-4 w-3/4 overflow-x-hidden hidden md:flex relative">
         <div
           className="overflow-hidden w-full"
           ref={emblaRef}

@@ -7,5 +7,6 @@ export const useCookies = <T>(cookieName: string, onCookieRetrieved: (cookie: T 
       const parsedCookie: T | null = stringifiedCookie ? JSON.parse(stringifiedCookie) : null;
       onCookieRetrieved(parsedCookie);
     })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 };

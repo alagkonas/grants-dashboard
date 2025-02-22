@@ -5,18 +5,23 @@ import { useMutation } from "@apollo/client";
 import { UPDATE_APPLICATION_STATUS } from "@/services/graphql/mutations";
 import { ApplicationStatus } from "@/types/types";
 import { Loader } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 export default function SubmitButton({ applicationId }: { applicationId: string }) {
+  const router = useRouter();
   const [updateApplicationStatus, { loading }] = useMutation(UPDATE_APPLICATION_STATUS, {
     variables: {
       applicationId,
       status: ApplicationStatus.SUBMITTED
+    },
+    onCompleted: () => {
+      router.refresh();
     }
   });
 
   return (
     <button
-      className="w-1/2 bg-white text-gray-800 px-2 py-1 rounded-lg font-medium hover:bg-white/80 transition-colors"
+      className="w-1/3 bg-white text-gray-800 px-2 py-1 rounded-lg font-medium hover:bg-white/80 transition-colors"
       onClick={() => updateApplicationStatus()}
     >
       {loading && (

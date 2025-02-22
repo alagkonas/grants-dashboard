@@ -38,18 +38,18 @@ export default function DesktopCarousel({ slides, options }: DesktopCarouselProp
         <div>
           <div className="flex items-center space-x-4 mb-4">
             <button
-              className="p-2 rounded-lg border border-orange-500 hover:bg-gray-50 hover:cursor-pointer"
+              className="p-2 rounded-lg border border-orange-600 hover:bg-gray-50 hover:cursor-pointer"
               onClick={onPrevButtonClick}
               disabled={prevBtnDisabled}
             >
-              <ArrowLeft className="h-4 w-4 text-orange-500" />
+              <ArrowLeft className="h-4 w-4 text-orange-600" />
             </button>
             <button
-              className="p-2 rounded-lg border border-orange-500 hover:bg-gray-50 hover:cursor-pointer"
+              className="p-2 rounded-lg border border-orange-600 hover:bg-gray-50 hover:cursor-pointer"
               onClick={onNextButtonClick}
               disabled={nextBtnDisabled}
             >
-              <ArrowRight className="h-4 w-4 text-orange-500" />
+              <ArrowRight className="h-4 w-4 text-orange-600" />
             </button>
           </div>
 
@@ -58,7 +58,7 @@ export default function DesktopCarousel({ slides, options }: DesktopCarouselProp
               <button
                 key={index}
                 className={`w-2.5 h-2.5 rounded-full ${
-                  index === selectedIndex ? "bg-orange-500" : "bg-gray-200"
+                  index === selectedIndex ? "bg-orange-600" : "bg-gray-200"
                 }`}
                 onClick={() => onDotButtonClick(index)}
               />

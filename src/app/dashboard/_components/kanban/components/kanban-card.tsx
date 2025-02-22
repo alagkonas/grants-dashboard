@@ -8,21 +8,23 @@ import { getCardActionFooter } from "@/app/dashboard/_components/kanban/utils/ge
 import { formatDate } from "@/utils/formatDate";
 
 export type ApplicationCardProps = {
-  status?: ApplicationStatus;
+  updateStatus?: ApplicationStatus;
+  currentStatus?: ApplicationStatus;
   grant: Partial<Grant>
   recordId: string
 }
 
-export default function KanbanCard({ grant, status, recordId }: ApplicationCardProps) {
-  const cardActionFooter = getCardActionFooter({ status, grant, recordId });
+export default function KanbanCard({ grant, updateStatus, currentStatus, recordId }: ApplicationCardProps) {
+  const cardActionFooter = getCardActionFooter({ updateStatus, grant, currentStatus, recordId });
 
   return (
     <Card
       className="mb-4"
     >
       <CardContent className="pt-6 space-y-4">
-        {status === ApplicationStatus.IN_PROGRESS ? (
+        {currentStatus === ApplicationStatus.IN_PROGRESS ? (
           <div className="flex justify-start items-center">
+            {/* here we could display the actual percentage of the form application instead of a mock percent */}
             <p className="text-2xl text-gray-700 font-bold pr-2">
               80%
             </p>

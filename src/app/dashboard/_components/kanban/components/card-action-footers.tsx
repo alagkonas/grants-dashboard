@@ -73,7 +73,6 @@ export const InProgressApplicationActionFooter: React.FC<{ deadline: Date } & Up
         actionText={Texts.Update}
         onAction={updateApplication}
         loading={loading}
-
       >
         <ViewInfoButton />
       </Dialog>

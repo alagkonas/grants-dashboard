@@ -14,7 +14,7 @@ export default function Header() {
     <div className="bg-white border-b border-gray-100 h-full">
       <div className="h-16 px-4 flex items-center justify-between">
         <div className="flex items-center space-x-8 align-bottom h-full">
-          <Link href="/dashboard" className="flex-shrink-0">
+          <Link href="/" className="flex-shrink-0">
             <Image src="/vee-logo.png" alt="Vee" width={100} height={100} />
           </Link>
 

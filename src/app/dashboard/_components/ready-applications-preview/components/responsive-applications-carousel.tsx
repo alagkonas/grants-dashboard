@@ -10,8 +10,8 @@ import { getOrganizationHeaders } from "@/server/utils";
 const OPTIONS: EmblaOptionsType = { align: "start", loop: true, containScroll: "trimSnaps", slidesToScroll: 1 };
 
 export default async function ResponsiveApplicationsCarousel() {
+  // await new Promise(resolve => setTimeout(resolve, 5000));
   const organizationHeaders = await getOrganizationHeaders();
-
   const { data } = await getClient()
     .query({
       query: GET_READY_APPLICATIONS,

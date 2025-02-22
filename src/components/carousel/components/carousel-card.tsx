@@ -13,7 +13,7 @@ export default function CarouselCard({ application }: CarouselCardProps) {
       className="flex-[0_0_40%] pl-8"
     >
       <div
-        className={"w-full h-full transition-opacity duration-300 bg-gradient-to-r to-orange-400 from-orange-300 p-2 text-white rounded-xl"}
+        className={"w-full h-full transition-opacity duration-300 bg-gradient-to-r to-orange-500 from-orange-400 p-2 text-white rounded-xl"}
       >
         <div className="space-y-1 h-full flex min-w-[300px] flex-col items-center justify-between">
           <div className="bg-white/70 text-gray-800 px-3 py-1 rounded-full text-sm w-fit flex flex-row items-center justify-between ">

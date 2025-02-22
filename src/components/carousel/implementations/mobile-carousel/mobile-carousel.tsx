@@ -27,7 +27,7 @@ export default function MobileCarousel({ slides, options }: MobileCarouselProps)
 
 
       <div className="relative mt-6 w-[400px]">
-        <div className="flex justify-evenly h-72 w-full flex-col items-center">
+        <div className="flex justify-evenly h-60 w-full flex-col items-center">
           <div className="overflow-x-hidden h-full w-[90%]">
             <div
               className="overflow-hidden h-full w-full"
@@ -45,7 +45,7 @@ export default function MobileCarousel({ slides, options }: MobileCarouselProps)
               <button
                 key={index}
                 className={`w-2.5 h-2.5 rounded-full mx-1 ${
-                  index === selectedIndex ? "bg-orange-500" : "bg-gray-200"
+                  index === selectedIndex ? "bg-orange-600" : "bg-gray-200"
                 }`}
                 onClick={() => onDotButtonClick(index)}
               />

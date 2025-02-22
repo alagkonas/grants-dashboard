@@ -1,5 +1,5 @@
-import MobileKanban from "@/app/dashboard/_components/kanban/components/mobile-kanban/kanban-mobile";
-import KanbanBoard from "@/app/dashboard/_components/kanban/components/dekstop-kanban/kanban-board";
+import MobileKanban from "@/app/dashboard/_components/kanban/components/mobile-kanban/mobile-kanban-board";
+import DesktopKanbanBoard from "@/app/dashboard/_components/kanban/components/dekstop-kanban/desktop-kanban-board";
 import { getOrganizationHeaders } from "@/server/utils";
 import { getClient } from "@/services/apollo-client/apollo-client";
 import { GET_KANBAN_DATA } from "@/services/graphql/queries";
@@ -27,8 +27,8 @@ export const KANBAN_APPLICATIONS_COLUMNS: KanbanColumnType[] = [
 ];
 
 export default async function ResponsiveKanban() {
+  // await new Promise(resolve => setTimeout(resolve, 5000));
   const organizationHeaders = await getOrganizationHeaders();
-
   const { data } = await getClient()
     .query({
       query: GET_KANBAN_DATA,
@@ -43,9 +43,7 @@ export default async function ResponsiveKanban() {
 
   return (
     <>
-      <div className="hidden md:flex flex-col ">
-        <KanbanBoard {...mappedData} />
-      </div>
+      <DesktopKanbanBoard {...mappedData} />
 
       <MobileKanban {...mappedData} />
     </>

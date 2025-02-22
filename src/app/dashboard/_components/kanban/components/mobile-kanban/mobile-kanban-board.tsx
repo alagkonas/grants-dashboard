@@ -2,10 +2,10 @@ import { TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import React from "react";
 import { Texts } from "@/app/dashboard/_components/kanban/texts";
 import { KANBAN_APPLICATIONS_COLUMNS, KanbanBoardProps } from "@/app/dashboard/_components/kanban/responsive-kanban";
-import { KanbanApplicationColumnMobile, KanbanNewGrantsColumnMobile } from "@/app/dashboard/_components/kanban/components/mobile-kanban/kanban-column-mobile";
+import { KanbanApplicationColumnMobile, KanbanNewGrantsColumnMobile } from "@/app/dashboard/_components/kanban/components/mobile-kanban/mobile-kanban-column";
 import TabsProvider from "@/providers/TabsProvider";
 
-export default function MobileKanban({ groupedApplications, newMatches }: KanbanBoardProps) {
+export default function MobileKanbanBoard({ groupedApplications, newMatches }: KanbanBoardProps) {
 
   return (
     <div className="md:hidden w-full">
@@ -44,19 +44,26 @@ export default function MobileKanban({ groupedApplications, newMatches }: Kanban
         </TabsContent>
 
 
-        {KANBAN_APPLICATIONS_COLUMNS.map((column) => (
-          <TabsContent
-            className="flex-2 flex flex-col overflow-hidden bg-red-100 overflow-x-auto"
-            key={column.id}
-            value={column.id}
-          >
-            <KanbanApplicationColumnMobile
+        {KANBAN_APPLICATIONS_COLUMNS.map((column, index) => {
+          const updateStatus =
+            index + 1 !== KANBAN_APPLICATIONS_COLUMNS.length
+              ? KANBAN_APPLICATIONS_COLUMNS[index + 1].id
+              : KANBAN_APPLICATIONS_COLUMNS[index].id;
+          return (
+            <TabsContent
+              className="flex-2 flex flex-col overflow-hidden bg-red-100 overflow-x-auto"
               key={column.id}
-              data={groupedApplications[column.id]}
-              status={column.id}
-              columnInfo={column.info} />
-          </TabsContent>
-        ))}
+              value={column.id}
+            >
+              <KanbanApplicationColumnMobile
+                key={column.id}
+                data={groupedApplications[column.id]}
+                currentStatus={column.id}
+                updateStatus={updateStatus}
+                columnInfo={column.info} />
+            </TabsContent>
+          );
+        })}
       </TabsProvider>
     </div>
   );

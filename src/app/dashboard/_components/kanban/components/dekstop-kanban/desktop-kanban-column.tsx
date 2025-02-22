@@ -3,32 +3,28 @@ import KanbanCard from "@/app/dashboard/_components/kanban/components/kanban-car
 import { GetNewMatchesNode, GetReadyApplicationsNode } from "@/services/graphql/types";
 import { Texts } from "@/app/dashboard/_components/kanban/texts";
 import { ApplicationStatus } from "@/types/types";
+import ColumnHeader from "@/app/dashboard/_components/kanban/components/column-header";
 
 export type KanbanApplicationColumnProps = {
   data: GetReadyApplicationsNode[];
   columnInfo: string;
-  status: ApplicationStatus;
+  updateStatus: ApplicationStatus;
+  currentStatus: ApplicationStatus
 }
 
-export function KanbanApplicationColumn({ data, columnInfo, status }: KanbanApplicationColumnProps) {
+export function KanbanApplicationColumn({ data, columnInfo, updateStatus, currentStatus }: KanbanApplicationColumnProps) {
   const columnTotal = data?.reduce((total, application) => total + (application?.match?.grant?.avgAmount ?? 0), 0) ?? 0;
 
   return (
     <div className="px-3 py-1 max-h-[calc(100vh-445px)] overflow-y-hidden rounded-lg bg-orange-100 no-scrollbar ">
-      <div className="sticky top-0 pt-4 pb-2 px-2 z-10 flex flex-col justify-center items-center w-full">
-        <h2 className="text-base font-semibold text-gray-800">{columnInfo}</h2>
-        <p className="text-gray-500 mt-1">
-          <span className="text-gray-800 font-semibold">Total of </span>
-          <span className="text-gray-800 font-bold text-2xl">${columnTotal}</span>
-        </p>
-      </div>
-
+      <ColumnHeader columnInfo={columnInfo} columnTotal={columnTotal} />
       {data?.length ? (
         <div className="py-4 max-h-[calc(100vh-530px)] overflow-y-auto no-scrollbar">
           {data?.map((application) => (
             <KanbanCard
               key={application.id}
-              status={status}
+              updateStatus={updateStatus}
+              currentStatus={currentStatus}
               grant={application.match.grant}
               recordId={application.id}
             />
@@ -39,7 +35,6 @@ export function KanbanApplicationColumn({ data, columnInfo, status }: KanbanAppl
           <span className="text-gray-800 font-semibold">{Texts.NoApplicationsInfo}</span>
         </div>
       )}
-      <div className="sticky top-0 px-6 py-4 z-11" />
 
     </div>
   );
@@ -51,19 +46,11 @@ export type KanbanNewGrantsColumnProps = {
 }
 
 export function KanbanNewGrantsColumn({ data, columnInfo }: KanbanNewGrantsColumnProps) {
-
   const columnTotal = data?.reduce((total, match) => total + (match.grant.avgAmount ?? 0), 0) ?? 0;
 
   return (
     <div className="px-3 py-1 max-h-[calc(100vh-445px)] overflow-y-hidden rounded-lg bg-orange-100 no-scrollbar ">
-      <div className="sticky top-0 pt-4 pb-2 px-2 z-10 flex flex-col justify-center items-center w-full">
-        <h2 className="text-base font-semibold text-gray-800">{columnInfo}</h2>
-        <p className="text-gray-500 mt-1">
-          <span className="text-gray-800 font-semibold">Total of </span>
-          <span className="text-gray-800 font-bold text-2xl">${columnTotal}</span>
-        </p>
-      </div>
-
+      <ColumnHeader columnInfo={columnInfo} columnTotal={columnTotal} />
       {data?.length ? (
         <div className="py-4 max-h-[calc(100vh-530px)] overflow-y-auto no-scrollbar">
           {data?.map((match) => (
@@ -79,7 +66,6 @@ export function KanbanNewGrantsColumn({ data, columnInfo }: KanbanNewGrantsColum
           <span className="text-gray-800 font-semibold">{Texts.NoNewGrants}</span>
         </div>
       )}
-      <div className="sticky top-0 px-6 py-4 z-11" />
     </div>
   );
 }

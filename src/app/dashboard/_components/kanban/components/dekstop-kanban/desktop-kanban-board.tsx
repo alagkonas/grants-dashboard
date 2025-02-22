@@ -1,5 +1,5 @@
 import React from "react";
-import { KanbanApplicationColumn, KanbanNewGrantsColumn } from "@/app/dashboard/_components/kanban/components/dekstop-kanban/desktop-kanban-column";
+import { DesktopKanbanNewApplicationColumn, DesktopKanbanNewGrantColumn } from "@/app/dashboard/_components/kanban/components/dekstop-kanban/desktop-kanban-column";
 import { Texts } from "@/app/dashboard/_components/kanban/texts";
 import { KANBAN_APPLICATIONS_COLUMNS, KanbanBoardProps } from "@/app/dashboard/_components/kanban/responsive-kanban";
 
@@ -16,7 +16,7 @@ export default function DesktopKanbanBoard({ groupedApplications, newMatches }: 
               </div>
 
               <div className="px-4 py-4 overflow-y-hidden no-scrollbar">
-                <KanbanNewGrantsColumn
+                <DesktopKanbanNewGrantColumn
                   data={newMatches}
                   columnInfo={Texts.NewGrantsInfo}
                 />
@@ -38,7 +38,7 @@ export default function DesktopKanbanBoard({ groupedApplications, newMatches }: 
 
                   </div>
                   <div className="px-4 py-4 overflow-y-hidden no-scrollbar">
-                    <KanbanApplicationColumn
+                    <DesktopKanbanNewApplicationColumn
                       key={column.id}
                       currentStatus={column.id}
                       updateStatus={updateStatus}

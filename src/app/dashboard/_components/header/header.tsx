@@ -11,7 +11,7 @@ import { setOrganizationCookies } from "@/server/actions";
 
 export default function Header() {
   return (
-    <div className="sticky top-0 z-50 bg-white border-b border-gray-100 h-full">
+    <div className="bg-white border-b border-gray-100 h-full">
       <div className="h-16 px-4 flex items-center justify-between">
         <div className="flex items-center space-x-8 align-bottom h-full">
           <Link href="/" className="flex-shrink-0">

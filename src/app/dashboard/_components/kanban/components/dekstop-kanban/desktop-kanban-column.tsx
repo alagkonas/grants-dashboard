@@ -14,10 +14,11 @@ type DesktopKanbanColumnWrapperProps = PropsWithChildren<{
 
 function DesktopKanbanColumnWrapper({ children, columnInfo, noDataInfo, noData, columnTotal }: DesktopKanbanColumnWrapperProps) {
   return (
-    <div className="px-3 py-1 max-h-[calc(100vh-445px)] overflow-y-hidden rounded-lg bg-orange-100 no-scrollbar ">
+    <div className="px-3 max-h-[calc(100vh-445px)] overflow-y-auto no-scrollbar rounded-lg bg-orange-100">
+      <div className="h-4 sticky top-0 bg-orange-100 " />
       <ColumnHeader columnInfo={columnInfo} columnTotal={columnTotal} />
       {!noData ? (
-        <div className="py-4 max-h-[calc(100vh-530px)] overflow-y-auto no-scrollbar">
+        <div className="pt-4 pb-0 max-h-full overflow-y-auto no-scrollbar">
           {children}
         </div>
       ) : (
@@ -25,6 +26,7 @@ function DesktopKanbanColumnWrapper({ children, columnInfo, noDataInfo, noData, 
           <span className="text-gray-800 font-semibold">{noDataInfo}</span>
         </div>
       )}
+      <div className="h-4 sticky bottom-0 bg-orange-100 " />
     </div>
   );
 }

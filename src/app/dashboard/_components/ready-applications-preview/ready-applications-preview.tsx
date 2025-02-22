@@ -4,7 +4,7 @@ import ResponsiveApplicationsCarousel from "@/app/dashboard/_components/ready-ap
 
 export default function ReadyApplicationsPreview() {
   return (
-    <div className="md:bg-gray-50 sm:bg-white py-8">
+    <div className="md:bg-gray-50 sm:bg-white sm:py-4 md:py-8">
       <div className="w-full h-full">
         <div className="flex flex-row items-center justify-evenly">
           <UserGreeting />

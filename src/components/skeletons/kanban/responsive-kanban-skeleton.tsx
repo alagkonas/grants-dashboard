@@ -37,8 +37,8 @@ export function DesktopKanbanSkeleton() {
 export function MobileKanbanSkeleton() {
   return (
     <div className="md:hidden w-full">
-      <div>
-        <div className="w-full flex overflow-x-auto no-scrollbar bg-white border-b border-gray-200">
+      <div className="flex-2 flex flex-col justify-center overflow-auto bg-white">
+        <div className="w-full flex overflow-x-auto no-scrollbar bg-white">
           {[...Array(5)].map((_, index) => (
             <div
               key={`${index}+ 7`}
@@ -49,14 +49,16 @@ export function MobileKanbanSkeleton() {
           ))}
         </div>
 
-        <div
-          className="flex-2 flex flex-col overflow-auto bg-white h-[500px]"
-        >
-          <div className="space-y-4 p-4">
-            {[...Array(4)].map((_, index) => (
-              <div key={`${index}+ 8`} className="bg-gray-200 h-24 rounded-lg animate-pulse"></div>
+        <div className="w-full flex flex-col justify-center items-center">
+
+        <div className="h-6 w-2/3 my-6 bg-gray-300 rounded animate-pulse"></div>
+        <div className="h-6 w-1/2 mb-6 bg-gray-300 rounded animate-pulse"></div>
+        </div>
+
+          <div className="space-y-4 p-4 px-16 ">
+            {[...Array(2)].map((_, index) => (
+              <div key={`${index}+ 8`} className="h-40 bg-gray-200 rounded-lg animate-pulse"></div>
             ))}
-          </div>
         </div>
       </div>
     </div>

@@ -21,7 +21,7 @@ export default function SubmitButton({ applicationId }: { applicationId: string 
 
   return (
     <button
-      className="w-1/3 bg-white text-gray-800 px-2 py-1 rounded-lg font-medium hover:bg-white/80 transition-colors"
+      className="w-1/2 bg-white text-gray-800 px-2 py-1 rounded-lg font-medium hover:bg-white/80 transition-colors"
       onClick={() => updateApplicationStatus()}
     >
       {loading && (

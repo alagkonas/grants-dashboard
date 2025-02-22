@@ -4,7 +4,7 @@ import { ResponsiveCarouselSkeleton } from "@/components/skeletons/ready-applica
 
 export default function ReadyApplicationsPreviewSkeleton() {
   return (
-    <div className="md:bg-gray-50 sm:bg-white py-8">
+    <div className="md:bg-gray-50 sm:bg-white sm:py-4 md:py-8">
       <div className="w-full h-full">
         <div className="flex flex-row items-center justify-evenly">
           <UserGreetingSkeleton />

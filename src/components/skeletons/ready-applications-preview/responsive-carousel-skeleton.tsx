@@ -63,14 +63,14 @@ export function DesktopCarouselSkeleton() {
 
 export function MobileCarouselSkeleton() {
   return (
-    <div className="md:hidden">
+    <div className="md:hidden mt-2">
       <div className="space-y-1 px-4 flex flex-col items-center">
         <div className={`${shimmer} h-8 w-64 bg-gray-200 rounded-md`} />
         <div className={`${shimmer} h-5 w-48 bg-gray-200 rounded-md`} />
       </div>
 
-      <div className="relative mt-6 w-[400px]">
-        <div className="flex justify-evenly h-60 w-full flex-col items-center">
+      <div className="relative mt-2 mb-2 w-[400px]">
+        <div className="flex justify-evenly h-52 w-full flex-col items-center">
           <div className="overflow-x-hidden h-full w-[90%]">
             <div className="overflow-hidden h-full w-full">
               <div className="flex touch-pan-y -ml-8">

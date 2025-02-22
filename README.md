@@ -1,36 +1,44 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Grants Dashboard
+
+This is a [Next.js](https://nextjs.org) and [Apollo Client](https://www.apollographql.com/docs/react) demo project
+bootstrapped with `create-next-app@latest` and `apollo-client-nextjs`.
+
+## Tech Stack
+
+- Next.js 15.1.x
+- Apollo Client 3.13.x
+- React 19.0.x
+- TypeScript 5
+- Tailwind 3.4.1
+- Shadcn/ui
 
 ## Getting Started
 
-First, run the development server:
+First, install the necessary dependencies using `npm install` and then run the development server with `npm run dev`.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+You will also need to have `grants-dashboard-api` running either using `npm` or `docker` (see
+instructions [here](https://github.com/alagkonas/grants-dashboard-api)).
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## API Reference
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The project uses the Grants Dashboard API:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Base dev URL: http://localhost:8000/graphql
+- Documentation: https://github.com/alagkonas/grants-dashboard-api
 
-## Learn More
+## Application and Implementation Breakdown
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- The implementation closely follows the provided `graphql schemas`, though some data is hardcoded. In a production
+  environment, this data would be fetched from the backend.
+- The multitenancy requirement, based on the schemas, is implemented at the organization level rather than the user
+  level, though ideally both should support multitenancy.
+- Multitenancy is handled through request headers, which are stored in client cookies and retrieved on the server via
+  the `next/headers` package. While the schemas explicitly include fields to query `matches` by `organizationId`,
+  multitenancy should be implemented more securely using request headers and cookies (similar to authentication).
+- For data fetching, I implemented a preload-to-server approach (
+  detailed [here](https://github.com/alagkonas/app-router-apollo-demo)). This enables data to be served to the client
+  using Apollo Client. I chose this approach to leverage Apollo Client's cache, allowing seamless query refetching after
+  mutations.
+- To optimize user experience while streaming data from the server, I implemented `skeleton` components. For
+  demonstration purposes, you can simulate slow network requests by uncommenting line 10 in
+  `ResponsiveApplicationsCarousel` and line 8 in `ResponsiveKanban` (don't forget to comment them again).
